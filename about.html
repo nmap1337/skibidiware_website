@@ -1,0 +1,117 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - skibidiware.cc</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <style>
+    .nav-links {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: white;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #cccccc;
+    }
+
+    .about-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .about-content {
+      max-width: 800px;
+      text-align: center;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .team-member {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .member-avatar {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js" class="background-overlay"></div>
+  
+  <header>
+    <div class="logo">
+      <img src="icon.png" alt="SkibidiWare Logo">
+      <span>skibidiware.cc</span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/about.html" class="nav-link">About Us</a></li>
+        <li><a href="/features.html" class="nav-link">Features</a></li>
+        <li><a href="/pricing.html" class="nav-link">Pricing</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about-section">
+      <div class="about-content" data-aos="fade-up">
+        <h1>About skibidiware.cc</h1>
+        <p>Welcome to skibidiware.cc, where innovation meets gameplay excellence. Our journey began with a simple mission: to create the most advanced and user-friendly cheat available.</p>
+        <p>Our team consists of passionate developers and gamers who understand what players need. We've combined cutting-edge technology with beautiful design to deliver an unparalleled gaming experience.</p>
+        <div class="team-grid">
+          <div class="team-member" data-aos="fade-up" data-aos-delay="100">
+            <div class="member-avatar">👨‍💻</div>
+            <h3>Development Team</h3>
+            <p>Expert developers ensuring smooth performance and regular updates</p>
+          </div>
+          <div class="team-member" data-aos="fade-up" data-aos-delay="200">
+            <div class="member-avatar">🎨</div>
+            <h3>Design Team</h3>
+            <p>Creative minds crafting beautiful and intuitive interfaces</p>
+          </div>
+          <div class="team-member" data-aos="fade-up" data-aos-delay="300">
+            <div class="member-avatar">🛡️</div>
+            <h3>Security Team</h3>
+            <p>Dedicated professionals keeping your experience safe and secure</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="particles-config.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+</body>
+</html>

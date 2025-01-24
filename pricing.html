@@ -1,0 +1,131 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing - skibidiware.cc</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <style>
+    .pricing-section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .coming-soon-box {
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 20px;
+      padding: 3rem 5rem;
+      text-align: center;
+      box-shadow: 
+        0 0 30px rgba(0, 255, 255, 0.1),
+        inset 0 0 30px rgba(0, 255, 255, 0.05);
+      border: 1px solid rgba(0, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 1s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .coming-soon-box h2 {
+      font-size: 3rem;
+      margin: 0;
+      background: linear-gradient(45deg, #00ffff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 
+          0 0 10px rgba(0, 255, 255, 0.2),
+          0 0 20px rgba(0, 255, 255, 0.2),
+          0 0 30px rgba(0, 255, 255, 0.2);
+      }
+      to {
+        text-shadow: 
+          0 0 20px rgba(0, 255, 255, 0.4),
+          0 0 40px rgba(0, 255, 255, 0.4),
+          0 0 60px rgba(0, 255, 255, 0.4);
+      }
+    }
+
+    .coming-soon-box p {
+      color: #cccccc;
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: fadeIn 1s 0.5s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 
+          0 0 0 0 rgba(0, 255, 255, 0.2),
+          0 0 0 0 rgba(255, 0, 255, 0.2);
+      }
+      50% {
+        box-shadow: 
+          0 0 30px 0 rgba(0, 255, 255, 0.2),
+          0 0 60px 0 rgba(255, 0, 255, 0.1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js" class="background-overlay"></div>
+  
+  <header>
+    <div class="logo">
+      <img src="icon.png" alt="SkibidiWare Logo">
+      <span>skibidiware.cc</span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/about.html" class="nav-link">About Us</a></li>
+        <li><a href="/features.html" class="nav-link">Features</a></li>
+        <li><a href="/pricing.html" class="nav-link">Pricing</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="pricing-section">
+      <div class="coming-soon-box">
+        <div class="pulse"></div>
+        <h2>Coming Soon</h2>
+        <p>Our pricing plans are being finalized. Stay tuned!</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="particles-config.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+</body>
+</html>

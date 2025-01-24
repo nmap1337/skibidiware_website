@@ -1,0 +1,130 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features - skibidiware.cc</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <style>
+    .nav-links {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: white;
+      margin-right: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #cccccc;
+    }
+
+    .features-section {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .feature-card h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .feature-card li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js" class="background-overlay"></div>
+  
+  <header>
+    <div class="logo">
+      <img src="icon.png" alt="SkibidiWare Logo">
+      <span>skibidiware.cc</span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/about.html" class="nav-link">About Us</a></li>
+        <li><a href="/features.html" class="nav-link">Features</a></li>
+        <li><a href="/pricing.html" class="nav-link">Pricing</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="features-section">
+      <h1 data-aos="fade-up">Features</h1>
+      <div class="features-grid">
+        <div class="feature-card" data-aos="fade-up">
+          <h3>Aimbot</h3>
+          <ul>
+            <li>Silent Aim</li>
+            <li>Prediction</li>
+            <li>Auto Fire</li>
+            <li>Smoothing</li>
+          </ul>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+          <h3>Movement</h3>
+          <ul>
+            <li>Bunny Hop</li>
+            <li>Auto Strafer</li>
+            <li>Speedhack</li>
+            <li>Auto Stop</li>
+          </ul>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+          <h3>Visuals</h3>
+          <ul>
+            <li>ESP</li>
+            <li>Tracers</li>
+            <li>Chams</li>
+            <li>Custom HUD</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="particles-config.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
+</body>
+</html>
