@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -13,156 +12,83 @@
   <style>
     .pricing-section {
       min-height: 100vh;
-      padding: 6rem 2rem 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
     }
 
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .pricing-card {
+    .coming-soon-box {
       background: rgba(0, 0, 0, 0.7);
       border-radius: 20px;
-      padding: 2rem;
+      padding: 3rem 5rem;
       text-align: center;
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+      box-shadow: 
+        0 0 30px rgba(0, 255, 255, 0.1),
+        inset 0 0 30px rgba(0, 255, 255, 0.05);
       border: 1px solid rgba(0, 255, 255, 0.1);
       backdrop-filter: blur(10px);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 1s forwards;
     }
 
-    .pricing-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 50px rgba(0, 255, 255, 0.2);
+    @keyframes fadeInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
-    .pricing-card h3 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+    .coming-soon-box h2 {
+      font-size: 3rem;
+      margin: 0;
       background: linear-gradient(45deg, #00ffff, #ff00ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: glow 2s ease-in-out infinite alternate;
     }
 
-    .pricing-card .price {
-      font-size: 2.5rem;
-      margin: 1rem 0;
-      color: #00ffff;
+    @keyframes glow {
+      from {
+        text-shadow: 
+          0 0 10px rgba(0, 255, 255, 0.2),
+          0 0 20px rgba(0, 255, 255, 0.2),
+          0 0 30px rgba(0, 255, 255, 0.2);
+      }
+      to {
+        text-shadow: 
+          0 0 20px rgba(0, 255, 255, 0.4),
+          0 0 40px rgba(0, 255, 255, 0.4),
+          0 0 60px rgba(0, 255, 255, 0.4);
+      }
     }
 
-    .pricing-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 1rem 0;
-      text-align: left;
-    }
-
-    .pricing-card li {
-      margin: 0.5rem 0;
-      padding-left: 1.5rem;
-      position: relative;
-    }
-
-    .pricing-card li:before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: #00ffff;
-    }
-
-    .buy-btn {
-      display: inline-block;
-      padding: 1rem 2rem;
-      background: linear-gradient(45deg, #00ffff, #ff00ff);
-      color: white;
-      text-decoration: none;
-      border-radius: 30px;
-      font-weight: 500;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 1.1rem;
-    }
-
-    .buy-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 20px rgba(0, 255, 255, 0.3);
-    }
-
-    .payment-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .payment-overlay.active {
-      display: flex;
-    }
-
-    .payment-message {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 2rem;
-      border-radius: 20px;
-      text-align: center;
-      max-width: 500px;
-      border: 1px solid rgba(0, 255, 255, 0.2);
-    }
-
-    .payment-message h2 {
-      margin-bottom: 1rem;
-      color: #00ffff;
-    }
-
-    .payment-message p {
-      margin-bottom: 1rem;
-      color: #fff;
-    }
-
-    .warning {
-      color: #ff6b6b;
-      font-size: 0.9rem;
+    .coming-soon-box p {
+      color: #cccccc;
       margin-top: 1rem;
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: fadeIn 1s 0.5s forwards;
     }
 
-    .product-details {
-      height: 0;
-      overflow: hidden;
-      transition: height 0.3s ease;
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
 
-    .product-details.active {
-      height: auto;
-      padding: 1rem 0;
-    }
-
-    .details-btn {
-      background: none;
-      border: 1px solid rgba(0, 255, 255, 0.3);
-      color: #00ffff;
-      padding: 0.5rem 1rem;
-      border-radius: 15px;
-      cursor: pointer;
-      margin: 1rem 0;
-      transition: all 0.3s ease;
-    }
-
-    .details-btn:hover {
-      background: rgba(0, 255, 255, 0.1);
-    }
-
-    html {
-      scroll-behavior: smooth;
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 
+          0 0 0 0 rgba(0, 255, 255, 0.2),
+          0 0 0 0 rgba(255, 0, 255, 0.2);
+      }
+      50% {
+        box-shadow: 
+          0 0 30px 0 rgba(0, 255, 255, 0.2),
+          0 0 60px 0 rgba(255, 0, 255, 0.1);
+      }
     }
   </style>
 </head>
@@ -176,76 +102,23 @@
     </div>
     <nav>
       <ul class="nav-links">
-        <li><a href="/" class="nav-link">Home</a></li>
-        <li><a href="/about.html" class="nav-link">About Us</a></li>
-        <li><a href="/features.html" class="nav-link">Features</a></li>
-        <li><a href="/pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="/skibidiware_website/" class="nav-link">Home</a></li>
+        <li><a href="/skibidiware_website/about.html" class="nav-link">About Us</a></li>
+        <li><a href="/skibidiware_website/features.html" class="nav-link">Features</a></li>
+        <li><a href="/skibidiware_website/pricing.html" class="nav-link">Pricing</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <section class="pricing-section">
-      <div class="pricing-grid">
-        <div class="pricing-card" data-aos="fade-up" data-aos-delay="0">
-          <h3>Minecraft Cheat</h3>
-          <div class="price">499₽</div>
-          <button class="details-btn" onclick="toggleDetails('mc-details')">View Details</button>
-          <div id="mc-details" class="product-details">
-            <ul>
-              <li>Advanced KillAura</li>
-              <li>ESP & Tracers</li>
-              <li>Speed & Flight</li>
-              <li>Auto Critical</li>
-              <li>Lifetime Updates</li>
-            </ul>
-          </div>
-          <button class="buy-btn" onclick="initiatePurchase('Minecraft Cheat', 499)">Purchase Now</button>
-        </div>
-
-        <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
-          <h3>Phantom Forces Script</h3>
-          <div class="price">299₽</div>
-          <button class="details-btn" onclick="toggleDetails('pf-details')">View Details</button>
-          <div id="pf-details" class="product-details">
-            <ul>
-              <li>Silent Aim</li>
-              <li>Wallhack</li>
-              <li>No Recoil</li>
-              <li>Speed Hack</li>
-              <li>Weekly Updates</li>
-            </ul>
-          </div>
-          <button class="buy-btn" onclick="initiatePurchase('Phantom Forces Script', 299)">Purchase Now</button>
-        </div>
-
-        <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
-          <h3>Counter Blox Script</h3>
-          <div class="price">399₽</div>
-          <button class="details-btn" onclick="toggleDetails('cb-details')">View Details</button>
-          <div id="cb-details" class="product-details">
-            <ul>
-              <li>Aimbot</li>
-              <li>Chams</li>
-              <li>Triggerbot</li>
-              <li>Skin Changer</li>
-              <li>Monthly Updates</li>
-            </ul>
-          </div>
-          <button class="buy-btn" onclick="initiatePurchase('Counter Blox Script', 399)">Purchase Now</button>
-        </div>
+      <div class="coming-soon-box">
+        <div class="pulse"></div>
+        <h2>Coming Soon</h2>
+        <p>Our pricing plans are being finalized. Stay tuned!</p>
       </div>
     </section>
   </main>
-
-  <div id="paymentOverlay" class="payment-overlay">
-    <div class="payment-message">
-      <h2>Processing Payment</h2>
-      <p>You will be redirected to our payment system...</p>
-      <p class="warning">Note: After payment, contact staff in Discord for product activation.</p>
-      <p class="warning">⚠️ Excessive pinging of staff is not allowed and may result in a ban.</p>
-    </div>
-  </div>
 
   <script src="particles-config.js"></script>
   <script>
@@ -253,59 +126,6 @@
       duration: 1000,
       once: true
     });
-
-    function toggleDetails(id) {
-      const details = document.getElementById(id);
-      details.classList.toggle('active');
-    }
-
-    function initiatePurchase(product, price) {
-      // Show overlay
-      const overlay = document.getElementById('paymentOverlay');
-      overlay.classList.add('active');
-
-      // Send webhook
-      const webhookData = {
-        content: "@everyone New Purchase Alert!",
-        embeds: [{
-          title: "New Purchase Initiated",
-          description: `Note: Verify payment in Donation Alerts before providing product.`,
-          fields: [
-            {
-              name: "Product",
-              value: product,
-              inline: true
-            },
-            {
-              name: "Price",
-              value: `${price}₽`,
-              inline: true
-            }
-          ],
-          color: 3447003,
-          timestamp: new Date().toISOString()
-        }]
-      };
-
-      // Send webhook (you'll need to replace with your actual webhook URL)
-      fetch('https://discord.com/api/webhooks/1333219636702871574/pFIFdKapv4iIcuAxXxqCxhhYrNOOOk6Kt4c27Edr33A8X_5Fm5UDUMExo8O_jd-j1lFI', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(webhookData)
-      });
-
-      // Open donation alerts in new tab
-      setTimeout(() => {
-        window.open('https://www.donationalerts.com/r/nmap1337', '_blank');
-      }, 1500);
-
-      // Redirect after 5 seconds
-      setTimeout(() => {
-        window.location.href = '/payment-complete.html';
-      }, 5000);
-    }
   </script>
 </body>
 </html>
