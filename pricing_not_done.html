@@ -93,40 +93,147 @@
       box-shadow: 0 5px 20px rgba(0, 255, 255, 0.3);
     }
 
-    .payment-overlay {
+    .payment-modal {
       display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.9);
+      background: rgba(0, 0, 0, 0.8);
       z-index: 1000;
       justify-content: center;
       align-items: center;
+      backdrop-filter: blur(5px);
     }
 
-    .payment-overlay.active {
+    .payment-modal.active {
       display: flex;
+      animation: fadeIn 0.3s ease;
     }
 
-    .payment-message {
-      background: rgba(0, 0, 0, 0.8);
-      padding: 2rem;
-      border-radius: 20px;
-      text-align: center;
-      max-width: 500px;
+    .modal-content {
+      background: rgba(0, 0, 0, 0.9);
       border: 1px solid rgba(0, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
     }
 
-    .payment-message h2 {
-      margin-bottom: 1rem;
+    .modal-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .modal-header h2 {
+      color: #00ffff;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-info {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+    }
+
+    .product-info p {
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+
+    .product-info .price {
+      color: #00ffff;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .payment-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .payment-options button {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      color: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .payment-options button:hover {
+      background: rgba(0, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .payment-options button img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .payment-details {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+    }
+
+    .payment-details.active {
+      display: block;
+      animation: slideDown 0.3s ease;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .close-modal:hover {
       color: #00ffff;
     }
 
-    .payment-message p {
-      margin-bottom: 1rem;
+    .copy-btn {
+      background: rgba(0, 255, 255, 0.1);
+      border: 1px solid rgba(0, 255, 255, 0.2);
       color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.8rem;
+    }
+
+    .copy-btn:hover {
+      background: rgba(0, 255, 255, 0.2);
+    }
+
+    .crypto-address {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 0.5rem;
+      border-radius: 5px;
+      font-family: monospace;
+      margin: 0.5rem 0;
     }
 
     .warning {
@@ -135,34 +242,14 @@
       margin-top: 1rem;
     }
 
-    .product-details {
-      height: 0;
-      overflow: hidden;
-      transition: height 0.3s ease;
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .product-details.active {
-      height: auto;
-      padding: 1rem 0;
-    }
-
-    .details-btn {
-      background: none;
-      border: 1px solid rgba(0, 255, 255, 0.3);
-      color: #00ffff;
-      padding: 0.5rem 1rem;
-      border-radius: 15px;
-      cursor: pointer;
-      margin: 1rem 0;
-      transition: all 0.3s ease;
-    }
-
-    .details-btn:hover {
-      background: rgba(0, 255, 255, 0.1);
-    }
-
-    html {
-      scroll-behavior: smooth;
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
@@ -190,122 +277,208 @@
         <div class="pricing-card" data-aos="fade-up" data-aos-delay="0">
           <h3>Minecraft Cheat</h3>
           <div class="price">499₽</div>
-          <button class="details-btn" onclick="toggleDetails('mc-details')">View Details</button>
-          <div id="mc-details" class="product-details">
-            <ul>
-              <li>Advanced KillAura</li>
-              <li>ESP & Tracers</li>
-              <li>Speed & Flight</li>
-              <li>Auto Critical</li>
-              <li>Lifetime Updates</li>
-            </ul>
-          </div>
-          <button class="buy-btn" onclick="initiatePurchase('Minecraft Cheat', 499)">Purchase Now</button>
+          <button class="buy-btn" onclick="initiatePurchase('Minecraft Cheat', 499)">Buy Now</button>
         </div>
 
         <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
           <h3>Phantom Forces Script</h3>
           <div class="price">299₽</div>
-          <button class="details-btn" onclick="toggleDetails('pf-details')">View Details</button>
-          <div id="pf-details" class="product-details">
-            <ul>
-              <li>Silent Aim</li>
-              <li>Wallhack</li>
-              <li>No Recoil</li>
-              <li>Speed Hack</li>
-              <li>Weekly Updates</li>
-            </ul>
-          </div>
-          <button class="buy-btn" onclick="initiatePurchase('Phantom Forces Script', 299)">Purchase Now</button>
+          <button class="buy-btn" onclick="initiatePurchase('Phantom Forces Script', 299)">Buy Now</button>
         </div>
 
         <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
           <h3>Counter Blox Script</h3>
           <div class="price">399₽</div>
-          <button class="details-btn" onclick="toggleDetails('cb-details')">View Details</button>
-          <div id="cb-details" class="product-details">
-            <ul>
-              <li>Aimbot</li>
-              <li>Chams</li>
-              <li>Triggerbot</li>
-              <li>Skin Changer</li>
-              <li>Monthly Updates</li>
-            </ul>
-          </div>
-          <button class="buy-btn" onclick="initiatePurchase('Counter Blox Script', 399)">Purchase Now</button>
+          <button class="buy-btn" onclick="initiatePurchase('Counter Blox Script', 399)">Buy Now</button>
         </div>
       </div>
     </section>
   </main>
 
-  <div id="paymentOverlay" class="payment-overlay">
-    <div class="payment-message">
-      <h2>Processing Payment</h2>
-      <p>You will be redirected to our payment system...</p>
-      <p class="warning">Note: After payment, contact staff in Discord for product activation.</p>
-      <p class="warning">⚠️ Excessive pinging of staff is not allowed and may result in a ban.</p>
+  <div id="paymentModal" class="payment-modal">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closePaymentModal()">&times;</button>
+      <div class="modal-header">
+        <h2>Purchase Product</h2>
+      </div>
+      <div class="product-info">
+        <p id="selectedProduct">Product: </p>
+        <p id="selectedPrice" class="price">Price: </p>
+      </div>
+      <div class="payment-options">
+        <button onclick="selectPaymentMethod('cloudtips')">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Cloudpayments-logo.png/200px-Cloudpayments-logo.png" alt="CloudTips">
+          CloudTips
+        </button>
+		<!--
+        <button onclick="selectPaymentMethod('crypto')">
+          <img src="https://i.imgur.com/crypto.png" alt="Crypto">
+          USDT TRC20
+        </button>
+		-->
+        <button onclick="selectPaymentMethod('tf2')">
+          <img src="https://wiki.teamfortress.com/w/images/thumb/8/83/Backpack_Mann_Co._Supply_Crate_Key.png/250px-Backpack_Mann_Co._Supply_Crate_Key.png" alt="TF2">
+          TF2 Keys
+        </button>
+      </div>
+      <div id="cloudtipsDetails" class="payment-details">
+        <h4>CloudTips Payment</h4>
+        <p>Send payment to:</p>
+        <div class="crypto-address">
+          https://pay.cloudtips.ru/p/27fb9b64
+          <button class="copy-btn" onclick="copyToClipboard('https://pay.cloudtips.ru/p/27fb9b64')">Copy</button>
+        </div>
+      </div>
+	  <!--
+      <div id="cryptoDetails" class="payment-details">
+        <h4>USDT TRC20 Payment</h4>
+        <p>Send exact amount to:</p>
+        <div class="crypto-address">
+          test
+          <button class="copy-btn" onclick="copyToClipboard('test')">Copy</button>
+        </div>
+        <p class="warning">⚠️ Only send USDT TRC20 network tokens</p>
+      </div>
+	  -->
+      <div id="tf2Details" class="payment-details">
+        <h4>TF2 Keys Payment</h4>
+        <p>Send trade offer to:</p>
+        <div class="crypto-address">
+          <span id="tf2KeyAmount"></span>
+          <br>
+          https://steamcommunity.com/tradeoffer/new/?partner=1211906399&token=4deNHOEp
+          <button class="copy-btn" onclick="copyToClipboard('https://steamcommunity.com/tradeoffer/new/?partner=1211906399&token=4deNHOEp')">Copy</button>
+        </div>
+      </div>
     </div>
   </div>
 
   <script src="particles-config.js"></script>
   <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
+	AOS.init({
+		duration: 1000,
+		once: true
+	});
 
-    function toggleDetails(id) {
-      const details = document.getElementById(id);
-      details.classList.toggle('active');
-    }
+	function initiatePurchase(product, price) {
+		document.getElementById('selectedProduct').textContent = `Product: ${product}`;
+		document.getElementById('selectedPrice').textContent = `Price: ${price}₽`;
+		document.getElementById('paymentModal').classList.add('active');
 
-    function initiatePurchase(product, price) {
-      // Show overlay
-      const overlay = document.getElementById('paymentOverlay');
-      overlay.classList.add('active');
+		const keysNeeded = Math.ceil(price / 200);
+		document.getElementById('tf2KeyAmount').textContent = `Required: ${keysNeeded} TF2 ${keysNeeded === 1 ? 'key' : 'keys'}`;
 
-      // Send webhook
-      const webhookData = {
-        content: "@everyone New Purchase Alert!",
-        embeds: [{
-          title: "New Purchase Initiated",
-          description: `Note: Verify payment in CloudTips before providing product.`,
-          fields: [
-            {
-              name: "Product",
-              value: product,
-              inline: true
-            },
-            {
-              name: "Price",
-              value: `${price}₽`,
-              inline: true
-            }
-          ],
-          color: 3447003,
-          timestamp: new Date().toISOString()
-        }]
-      };
+		document.querySelectorAll('.payment-details').forEach(detail => {
+			detail.classList.remove('active');
+		});
+		const existingConfirmBtn = document.getElementById('confirmPurchaseBtn');
+		if (existingConfirmBtn) {
+			existingConfirmBtn.remove();
+		}
+	}
 
-      // Send webhook (you'll need to replace with your actual webhook URL)
-      fetch('https://discord.com/api/webhooks/1333219636702871574/pFIFdKapv4iIcuAxXxqCxhhYrNOOOk6Kt4c27Edr33A8X_5Fm5UDUMExo8O_jd-j1lFI', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(webhookData)
-      });
+	function selectPaymentMethod(method) {
+		document.querySelectorAll('.payment-details').forEach(detail => {
+			detail.classList.remove('active');
+		});
 
-      // Open donation alerts in new tab
-      setTimeout(() => {
-        window.open('https://pay.cloudtips.ru/p/27fb9b64', '_blank');
-      }, 1500);
+		document.getElementById(`${method}Details`).classList.add('active');
 
-      // Redirect after 5 seconds
-      setTimeout(() => {
-        window.location.href = '/payment-complete.html';
-      }, 5000);
-    }
+		const existingConfirmBtn = document.getElementById('confirmPurchaseBtn');
+		if (existingConfirmBtn) {
+			existingConfirmBtn.remove();
+		}
+
+
+		setTimeout(() => {
+			const confirmBtn = document.createElement('button');
+			confirmBtn.id = 'confirmPurchaseBtn';
+			confirmBtn.className = 'buy-btn';
+			confirmBtn.style.marginTop = '20px';
+			confirmBtn.style.width = '100%';
+			confirmBtn.style.background = 'linear-gradient(45deg, #00ff00, #00aa00)';
+			confirmBtn.textContent = 'Confirm Purchase';
+			confirmBtn.onclick = sendWebhook;
+
+
+			document.querySelector('.modal-content').appendChild(confirmBtn);
+		}, 5000);
+
+
+		function sendWebhook() {
+			const webhookData = {
+				content: "@everyone New Purchase Alert!",
+				embeds: [{
+					title: "New Purchase Initiated",
+					description: document.getElementById('selectedProduct').textContent +
+						"\n" + document.getElementById('selectedPrice').textContent +
+						"\nPayment Method: " + method.toUpperCase() +
+						"\nNote: Verify payment before providing product.",
+					color: 3447003,
+					timestamp: new Date().toISOString()
+				}]
+			};
+
+
+			fetch('https://discord.com/api/webhooks/1333219636702871574/pFIFdKapv4iIcuAxXxqCxhhYrNOOOk6Kt4c27Edr33A8X_5Fm5UDUMExo8O_jd-j1lFI', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(webhookData)
+			})
+			.then(response => {
+				if (response.ok) {
+					window.location.href = '/payment-complete.html';
+				} else {
+					alert('Failed to send webhook. Please try again.');
+				}
+			})
+			.catch(error => {
+				alert('Failed to send webhook. Please try again.');
+				console.error("Error:", error);
+			});
+		}
+
+
+	}
+
+	function closePaymentModal() {
+		document.getElementById('paymentModal').classList.remove('active');
+	}
+
+	document.getElementById('paymentModal').addEventListener('click', (e) => {
+		if (e.target.id === 'paymentModal') {
+			closePaymentModal();
+		}
+	});
+
+	function copyToClipboard(text) {
+		navigator.clipboard.writeText(text).then(() => {
+			const btn = event.target;
+			const originalText = btn.textContent;
+			btn.textContent = 'Copied!';
+			setTimeout(() => {
+				btn.textContent = originalText;
+			}, 2000);
+		});
+	}
+
+	const buyButtons = document.querySelectorAll('.buy-btn');
+	buyButtons.forEach(button => {
+		button.addEventListener('click', function(event) {
+			// Prevent multiple clicks
+			this.disabled = true;
+			// Restore button functionality after a delay (e.g., after the modal closes)
+			setTimeout(() => this.disabled = false, 6000); 
+			
+			// Call original function
+			const product = this.parentElement.querySelector('h3').textContent;
+			const price = parseInt(this.parentElement.querySelector('.price').textContent.replace(/[^0-9]/g, ''));
+			initiatePurchase(product, price);
+		});
+
+	});
   </script>
 </body>
 </html>
