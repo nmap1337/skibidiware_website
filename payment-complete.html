@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Complete - skibidiware.cc</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  
+  <style>
+    .payment-complete {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .message-box {
+      background: rgba(0, 0, 0, 0.8);
+      padding: 3rem;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 600px;
+      border: 1px solid rgba(0, 255, 255, 0.2);
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .message-box h1 {
+      color: #00ffff;
+      margin-bottom: 1.5rem;
+    }
+
+    .message-box p {
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .warning {
+      color: #ff6b6b;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .discord-link {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 1rem 2rem;
+      background: #7289da;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .discord-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(114, 137, 218, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js" class="background-overlay"></div>
+  
+  <header>
+    <div class="logo">
+      <img src="icon.png" alt="SkibidiWare Logo">
+      <span>skibidiware.cc</span>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/about.html" class="nav-link">About Us</a></li>
+        <li><a href="/features.html" class="nav-link">Features</a></li>
+        <li><a href="/pricing.html" class="nav-link">Pricing</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="payment-complete">
+      <div class="message-box">
+        <h1>Payment Initiated</h1>
+        <p>Thank you for your purchase! To receive your product, please follow these steps:</p>
+        <ol style="text-align: left; margin: 1.5rem 0;">
+          <li>Join our Discord server if you haven't already</li>
+          <li>Create a ticket or contact staff</li>
+          <li>Provide your payment proof from Donation Alerts</li>
+          <li>Wait for staff to verify and provide your product</li>
+        </ol>
+        <p class="warning">⚠️ Important: Do not spam staff with messages. Your request will be processed as soon as possible.</p>
+        <a href="https://discord.gg/ajNJTkapdQ" class="discord-link" target="_blank">Join Discord Server</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="particles-config.js"></script>
+</body>
+</html>

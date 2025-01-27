@@ -21,10 +21,11 @@
     </div>
     <nav>
       <ul class="nav-links">
-        <li><a href="/skibidiware_website/" class="nav-link">Home</a></li>
-        <li><a href="/skibidiware_website/about.html" class="nav-link">About Us</a></li>
-        <li><a href="/skibidiware_website/features.html" class="nav-link">Features</a></li>
-        <li><a href="/skibidiware_website/pricing.html" class="nav-link">Pricing</a></li>
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/about.html" class="nav-link">About Us</a></li>
+        <li><a href="/features.html" class="nav-link">Features</a></li>
+        <li><a href="/pricing.html" class="nav-link">Pricing</a></li>
+        <!-- <li><a href="/auth/login.html" class="nav-link" id="authLink">Login</a></li> -->
       </ul>
     </nav>
   </header>
@@ -55,7 +56,7 @@
         </div>
         <div class="gallery-item" data-aos="zoom-in">
           <img src="gif_1.gif" alt="Movement Features" onclick="openLightbox(this)">
-          <span>skibidiware.cc source code (real)</span>
+          <span>skibidiware source code (real)</span>
         </div>
         <div class="gallery-item" data-aos="zoom-in">
           <img src="gif_2.gif" alt="Visual Features" onclick="openLightbox(this)">
@@ -76,13 +77,64 @@
     </div>
   </div>
 
+  <!--
+  <div class="chat-container">
+    <div class="chat-header">
+      <h3>Shoutbox</h3>
+      <div class="chat-controls">
+        <button onclick="window.chat.toggleSound()" id="soundToggle">
+          🔔
+        </button>
+      </div>
+    </div>
+    <div id="chatbox"></div>
+    <div class="chat-input">
+      <input type="text" id="messageInput" placeholder="Type a message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+  -->
+
   <script src="particles-config.js"></script>
   <script src="lightbox.js"></script>
+  <!-- <script src="chat/chat.js"></script> -->
   <script>
     AOS.init({
       duration: 1000,
       once: true
     });
+	/*
+    function sendMessage() {
+      const input = document.getElementById('messageInput');
+      const message = input.value.trim();
+      
+      if (message && window.chat.sendMessage(message)) {
+        input.value = '';
+      }
+    }
+
+    document.getElementById('messageInput').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        sendMessage();
+      }
+    });
+
+    // Update auth link based on login status
+    function updateAuthLink() {
+      const authLink = document.getElementById('authLink');
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      
+      if (currentUser) {
+        authLink.textContent = 'Profile';
+        authLink.href = '/profile.html';
+      } else {
+        authLink.textContent = 'Login';
+        authLink.href = '/auth/login.html';
+      }
+    }
+
+    updateAuthLink();
+	*/
   </script>
 </body>
 </html>
