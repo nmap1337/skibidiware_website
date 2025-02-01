@@ -1,3 +1,4 @@
+/*
 class Chat {
   constructor() {
     this.room = new WebsimSocket();
@@ -93,3 +94,4 @@ class Chat {
 }
 
 window.chat = new Chat();
+*/
