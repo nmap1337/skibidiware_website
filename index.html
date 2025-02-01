@@ -86,6 +86,11 @@
         </div>
       </div>
     </section>
+    <div class="scroll-indicator" id="scrollIndicator">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41l-4.59 4.59c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/>
+      </svg>
+    </div>
   </main>
   <div id="lightbox" class="lightbox">
     <div class="lightbox-content">
@@ -155,6 +160,36 @@
 
     updateAuthLink();
 	*/
+	
+	// Scroll indicator functionality
+    const scrollIndicator = document.getElementById('scrollIndicator');
+    let hasScrolled = false;
+
+    scrollIndicator.addEventListener('click', () => {
+      const gallerySection = document.querySelector('.gallery');
+      gallerySection.scrollIntoView({ behavior: 'smooth' });
+      hideScrollIndicator();
+    });
+
+    function hideScrollIndicator() {
+      scrollIndicator.classList.add('fade-out');
+      hasScrolled = true;
+    }
+
+    // Check scroll position
+    window.addEventListener('scroll', () => {
+      if (!hasScrolled && window.scrollY > 100) {
+        hideScrollIndicator();
+      }
+    });
+
+    // Hide indicator if user has already seen it in this session
+    if (sessionStorage.getItem('hasSeenScrollIndicator')) {
+      scrollIndicator.style.display = 'none';
+    } else {
+      scrollIndicator.style.display = 'flex';
+      sessionStorage.setItem('hasSeenScrollIndicator', 'true');
+    }
   </script>
   <script>
     const introOverlay = document.querySelector('.intro-overlay');
