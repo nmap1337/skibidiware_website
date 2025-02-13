@@ -323,6 +323,26 @@
     }
   </script>
   <script>
+    function closeWarning() {
+      const banner = document.getElementById('warningBanner');
+      banner.style.animation = 'fadeOut 0.5s forwards';
+      
+      // Store in session storage so it doesn't show up again during this session
+      sessionStorage.setItem('warningClosed', 'true');
+      
+      setTimeout(() => {
+        banner.style.display = 'none';
+      }, 500);
+    }
+
+    // Check if warning was already closed
+    document.addEventListener('DOMContentLoaded', () => {
+      if (sessionStorage.getItem('warningClosed')) {
+        document.getElementById('warningBanner').style.display = 'none';
+      }
+    });
+  </script>
+  <script>
     const introOverlay = document.querySelector('.intro-overlay');
     let hasSeenIntro = sessionStorage.getItem('hasSeenIntro');
 
