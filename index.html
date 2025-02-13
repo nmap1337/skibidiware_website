@@ -10,6 +10,120 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+    /* Add these styles to the existing styles section */
+    .warning-banner {
+      position: fixed;
+      /*  top: 60px;  <-- REMOVE this line.  We'll set it dynamically. */
+      left: 0;
+      width: 100%;
+      background: linear-gradient(45deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.2));
+      border: 1px solid rgba(255, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 1rem;
+      z-index: 101; /* Higher than header's z-index */
+      animation: warningPulse 2s infinite;
+    }
+
+    @keyframes warningPulse {
+      0% {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
+      }
+      100% {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+      }
+    }
+
+    .warning-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0 1rem;
+    }
+
+    .warning-icon {
+      width: 24px;
+      height: 24px;
+      fill: #ff6b6b;
+      animation: bounce 1s infinite;
+    }
+    .warning-icon path{
+        fill: #ff6b6b;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .warning-text {
+      flex: 1;
+      color: #ff6b6b;
+      font-weight: 500;
+      text-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+      position: relative; /* Added this */
+
+    }
+
+    .warning-close {
+      /*position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);*/
+      background: none;
+      border: none;
+      color: #ff6b6b;
+      font-size: 24px;
+      cursor: pointer;
+      /*padding: 5px;*/
+      transition: all 0.3s ease;
+       margin-left: 15px; /* Add some space between the text and the button */
+    }
+
+    .warning-close:hover {
+      /*transform: translateY(-50%) scale(1.2);*/
+      color: #ff4444;
+    }
+
+    @keyframes fadeOut {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-20px); }
+    }
+     .warning-text a {
+        color: #ff6b6b; /* Or any color you prefer for the link */
+        text-decoration: underline; /* Make it clear it's a link */
+        transition: color 0.2s ease;
+        position: relative; /* Add this for the glow effect */
+        display: inline-block; /* Important for the glow effect */
+    }
+
+    .warning-text a:hover {
+        color: #ff4444; /* Darker red on hover, for example */
+
+    }
+      .warning-text a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #00ffff, #ff00ff); /* Gradient glow colors */
+        z-index: -1; /* Place behind the text */
+        opacity: 0; /* Initially hidden */
+        transition: opacity 0.3s ease; /* Smooth transition for the glow */
+        border-radius: inherit; /* Match the link's border-radius */
+    }
+    .warning-text a:hover::before {
+        opacity: 0.3; /* Show the glow on hover */
+        filter: blur(5px);
+    }
+  </style>
 </head>
 <body>
   <div class="intro-overlay">
@@ -39,6 +153,23 @@
       </ul>
     </nav>
   </header>
+
+  <!-- Add warning banner after header -->
+  <div class="warning-banner" id="warningBanner" data-aos="fade-down">
+    <div class="warning-content">
+      <svg class="warning-icon" viewBox="0 0 24 24">
+        <path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2zm0-6h2v4h-2z"/>
+      </svg>
+      <div class="warning-text">
+        ⚠️ SECURITY ALERT: A user known as "unix" (aka unixtp, sk33t, bluefire) is operating a fake website at <a href="https://skibidiware.netlify.app/Broke%20Alert.mp4" target="_blank">"skibidiware.vercel.app"</a>.
+        This site redirects to malicious cheat software (bluefire/spectra/blueapi) containing viruses and malware. The cheat contains
+        code stolen from "Xeno" and other open source projects. The author lacks programming knowledge and relies on copy-pasted code
+        from ChatGPT and other sources, making this extremely dangerous for your system. Stay safe and avoid this site!
+
+      </div>
+        <button class="warning-close" onclick="closeWarning()">×</button>
+    </div>
+  </div>
 
   <main>
     <section class="hero">
