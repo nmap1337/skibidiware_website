@@ -119,7 +119,8 @@ nav {
 }
 
 .hero {
-  min-height: 100vh;
+  padding-top: 160px; 
+  min-height: calc(100vh - 80px); 
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -463,6 +464,49 @@ nav {
   opacity: 0;
   transform: translateY(20px);
   pointer-events: none;
+}
+
+.warning-banner {
+  position: fixed;
+  top: 80px; 
+  left: 0;
+  width: 100%;
+  background: linear-gradient(45deg, rgba(255, 0, 0, 0.1), rgba(255, 0, 0, 0.2));
+  border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 1rem;
+  z-index: 99;
+  animation: warningPulse 2s infinite;
+  margin-top: 10px; 
+}
+
+.warning-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start; 
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.warning-icon {
+  width: 24px;
+  height: 24px;
+  fill: #ff6b6b;
+  animation: bounce 1s infinite;
+  flex-shrink: 0; 
+  margin-top: 3px; 
+}
+
+.warning-text {
+  flex: 1;
+  color: #ff6b6b;
+  font-weight: 500;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+  position: relative;
+  padding-right: 30px;
+  line-height: 1.5; 
+  font-size: 0.95rem; 
 }
 
 @media (max-width: 768px) {
