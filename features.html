@@ -11,18 +11,17 @@
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <style>
     .nav-links {
+      margin-left: auto;
       list-style: none;
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       align-items: center;
-      margin: 0;
-      padding: 0;
+      gap: 20px;
     }
 
     .nav-link {
       text-decoration: none;
       color: white;
-      margin-right: 20px;
       transition: color 0.3s ease;
     }
 
@@ -31,7 +30,7 @@
     }
 
     .features-section {
-      padding: 4rem 2rem;
+      padding: 120px 2rem 4rem; 
       text-align: center;
     }
 
@@ -40,29 +39,60 @@
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 2rem auto;
     }
 
     .feature-card {
       background: rgba(0, 0, 0, 0.7);
       padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+      border: 1px solid rgba(0, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 255, 255, 0.3);
+      border-color: rgba(0, 255, 255, 0.3);
     }
 
     .feature-card h3 {
       font-size: 2rem;
       margin-bottom: 1rem;
+      background: linear-gradient(45deg, #00ffff, #ff00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .feature-card ul {
       list-style: none;
       padding: 0;
-      margin: 0;
+      text-align: left;
     }
 
     .feature-card li {
-      margin-bottom: 0.5rem;
+      margin: 15px 0;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .feature-card li:before {
+      content: '⚡';
+      position: absolute;
+      left: 0;
+      color: #00ffff;
+    }
+
+    .beta-tag {
+      display: inline-block;
+      padding: 5px 10px;
+      background: rgba(255, 0, 255, 0.2);
+      border-radius: 15px;
+      font-size: 0.9rem;
+      margin-left: 10px;
+      color: #ff00ff;
+      border: 1px solid rgba(255, 0, 255, 0.3);
     }
   </style>
 </head>
@@ -86,40 +116,37 @@
 
   <main>
     <section class="features-section">
-      <h1 data-aos="fade-up">Features</h1>
+      <h1 data-aos="fade-up">GoreBox Cheat Features <span class="beta-tag">BETA</span></h1>
       <div class="features-grid">
         <div class="feature-card" data-aos="fade-up">
-          <h3>Aimbot</h3>
+          <h3>Gun Modifications</h3>
           <ul>
-            <li>Silent Aim</li>
-            <li>Prediction</li>
-            <li>Auto Fire</li>
+            <li>Aimbot</li>
+            <li>No Reload</li>
             <li>Rapid Fire</li>
-            <li>Smoothing</li>
-            <li>No Spread</li>
-            <li>No Recoil</li>
+            <li>Big Bombs Exploit</li>
           </ul>
         </div>
         <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-          <h3>Movement</h3>
+          <h3>Visual Features</h3>
           <ul>
-            <li>Bunny Hop</li>
-            <li>Auto Strafer</li>
-            <li>Speedhack</li>
-            <li>Auto Stop</li>
+            <li>ESP</li>
+            <li>FOV Circle</li>
+            <li>Custom Sounds</li>
+            <li>Ambience Modifications</li>
           </ul>
         </div>
         <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-          <h3>Visuals</h3>
+          <h3>Exploits</h3>
           <ul>
-            <li>ESP</li>
-            <li>Tracers</li>
-            <li>Chams</li>
-            <li>Skeleton</li>
-            <li>Custom HUD</li>
+            <li>Anti Kick</li>
+            <li>Anti Ban</li>
+            <li>ID Changer</li>
+            <li>Badge Spoofer</li>
           </ul>
         </div>
       </div>
+      <p style="margin-top: 2rem; color: #666;">⚠️ Note: This cheat is currently in beta. New features are being added regularly.</p>
     </section>
   </main>
 
