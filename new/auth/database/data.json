@@ -1,0 +1,41 @@
+{
+  "users": [
+    {
+      "uid": 1,
+      "username": "nmap",
+      "password": "QDrQ=f5_GYbe?7BjbXg14aJLJ=Jzb+^]b4AC)r)pRvcF8#jwL:!uf=)@VJ*j4h>K+9}jj)~Fs0o~GkQVgmxXo%J]g3K*JtEkK*!>",
+      "isAdmin": true,
+      "inviteCode": "WHY-WOULD-I-NEED-AN-INVITE",
+      "joinDate": "2025-01-01",
+      "ip": "127.0.0.1",
+      "subscription": {
+        "type": "lifetime",
+        "active": true,
+        "purchaseDate": "2025-01-01"
+      },
+      "profile": {
+        "avatar": "https://media.tenor.com/U-9bSaONTx4AAAAe/mr-penis.png",
+        "bio": "skibidiware.cc owner",
+        "customTitle": "Owner",
+        "badges": ["admin", "developer", "premium"]
+      }
+    }
+  ],
+  "inviteCodes": [
+    {
+      "code": "59eH-cbFH-6Iq1-nWGG",
+      "created": "2025-01-01",
+      "expires": "2025-01-01",
+      "used": false,
+      "createdBy": "nmap"
+    }
+  ],
+  "subscriptions": [
+    {
+      "uid": 1,
+      "type": "lifetime",
+      "purchaseDate": "2025-01-01",
+      "transactionId": "tx_123456"
+    }
+  ]
+}

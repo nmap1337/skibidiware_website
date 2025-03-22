@@ -1,0 +1,76 @@
+/* Add these styles to complement existing ones */
+.section-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: #ff4444;
+  text-shadow: 0 0 20px rgba(255, 68, 68, 0.3);
+}
+
+.feature-section,
+.pricing-section,
+.about-section {
+  padding: 120px 2rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.features-grid,
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.feature-card,
+.pricing-card {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 68, 68, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover,
+.pricing-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(255, 68, 68, 0.4);
+  box-shadow: 0 20px 40px rgba(255, 68, 68, 0.2);
+}
+
+.beta-badge {
+  margin-top: 3rem;
+  padding: 1rem 2rem;
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.3);
+  border-radius: 20px;
+  text-align: center;
+}
+
+.beta-badge span {
+  background: linear-gradient(45deg, #ff4444, #cc0000);
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+  .features-grid,
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .features-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}
